@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Navbar from "./components/Navbar";
 import Hero from "./sections/Hero";
+import Gallery from "./sections/Gallery";
 import About from "./sections/About";
 import Skills from "./sections/Skills";
 import Projects from "./sections/Projects";
@@ -25,6 +26,7 @@ const App = () => (
         <Navbar />
         <main>
           <Hero />
+          <Gallery />
           <About />
           <Skills />
           <Projects />

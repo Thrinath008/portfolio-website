@@ -4,15 +4,28 @@ import { FiArrowRight, FiDownload, FiGithub, FiLinkedin, FiMail } from 'react-ic
 import { FaInstagram } from 'react-icons/fa';
 import { portfolioData } from '../data/content';
 import { heroContainerVariants, fadeUpVariants } from '../utils/motionVariants';
-import headshotImage from '../assets/headshot.jpg';
-import mobileHeadshot from '../assets/mobile-headshort.jpeg';
+import ProfileCard from '../components/ProfileCard';
+import subjectImage from '../data/images/Subject.png';
 
 const Hero = () => {
   const [currentTypeIndex, setCurrentTypeIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const { hero, personal } = portfolioData;
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const currentWord = hero.typingCycle[currentTypeIndex];
@@ -40,6 +53,16 @@ const Hero = () => {
 
   const scrollToProjects = () => {
     const element = document.getElementById('projects');
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+  };
+
+  const handleContactClick = () => {
+    const element = document.getElementById('contact');
     if (element) {
       const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
@@ -169,28 +192,26 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Image - Right Side with Fade Effect */}
+          {/* ProfileCard - Right Side */}
           <motion.div
             variants={itemVariants}
-            className="relative h-[600px] lg:h-[700px] overflow-hidden"
+            className="relative h-[600px] lg:h-[700px] flex items-center justify-center"
           >
-            {/* Gradient fade on left edge of image */}
-            <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent z-10 pointer-events-none w-32" />
-            
-            {/* Mobile image - shown on small screens only */}
-            <img
-              src={mobileHeadshot}
-              alt={`${personal.name} - Mobile headshot`}
-              className="w-full h-full object-cover object-center block lg:hidden"
-              loading="eager"
-            />
-
-            {/* Desktop image - shown on large screens only */}
-            <img
-              src={headshotImage}
-              alt={`${personal.name} - Professional workspace`}
-              className="w-full h-full object-cover object-center hidden lg:block"
-              loading="eager"
+            <ProfileCard
+              name="Thrinath"
+              title={personal.role}
+              handle="thrinath"
+              status="Online"
+              contactText="Contact Me"
+              avatarUrl={subjectImage}
+              showUserInfo={false}
+              enableTilt={!isMobile}
+              enableMobileTilt={false}
+              onContactClick={handleContactClick}
+              showIcon={true}
+              showBehindGlow={true}
+              behindGlowColor="rgba(192, 192, 192, 0.4)"
+              customInnerGradient="linear-gradient(145deg,#000000 0%,#C0C0C0 50%,#FFFFFF 100%)"
             />
           </motion.div>
         </motion.div>

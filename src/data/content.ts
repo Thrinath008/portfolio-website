@@ -20,6 +20,23 @@ export const portfolioData = {
     secondaryCta: "Download CV",
   },
 
+  gallery: {
+    title: "Gallery",
+    images: [
+      "/src/data/images/IMG_0211 2.JPG",
+      "/src/data/images/IMG_0180 2.JPG",
+      "/src/data/images/IMG_0112 2.JPG",
+      "/src/data/images/IMG_0090 2.JPG",
+      "/src/data/images/IMG_3935 2.JPG",
+      "/src/data/images/IMG_3904 2.JPG",
+      "/src/data/images/IMG_3710 2.JPG",
+      "/src/data/images/IMG_3692 2.JPG",
+      "/src/data/images/IMG_3631 2.JPG",
+      "/src/data/images/IMG_3556 2.JPG",
+      "/src/data/images/IMG_3551 2.JPG"
+    ]
+  },
+
   about: {
     title: "About",
     bio: "A highly curious and passionate individual driven by the possibilities of data science, AI, and ML. Seeking an internship to gain hands-on experience and contribute to innovative projects that challenge creative and analytical skills.",
