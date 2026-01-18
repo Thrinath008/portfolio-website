@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FiArrowRight, FiDownload } from 'react-icons/fi';
+import { FiArrowRight, FiDownload, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import { FaInstagram } from 'react-icons/fa';
 import { portfolioData } from '../data/content';
 import { heroContainerVariants, fadeUpVariants } from '../utils/motionVariants';
 import headshotImage from '../assets/headshot.jpg';
@@ -123,6 +124,48 @@ const Hero = () => {
                 <FiDownload className="mr-2" />
                 <span>{hero.secondaryCta}</span>
               </motion.a>
+            </motion.div>
+
+            {/* Social Media Links */}
+            <motion.div 
+              variants={itemVariants}
+              className="flex items-center gap-4 sm:gap-6 pt-4"
+            >
+              <span className="text-sm sm:text-base text-foreground/60 font-medium whitespace-nowrap">Connect:</span>
+              <div className="flex gap-3 sm:gap-4">
+                <motion.a
+                  href={personal.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -2 }}
+                  className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary hover:bg-primary/20 transition-colors focus-ring"
+                  aria-label="Instagram"
+                >
+                  <FaInstagram className="w-4 h-4 sm:w-5 sm:h-5" />
+                </motion.a>
+                
+                <motion.a
+                  href={personal.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -2 }}
+                  className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary hover:bg-primary/20 transition-colors focus-ring"
+                  aria-label="LinkedIn"
+                >
+                  <FiLinkedin className="w-4 h-4 sm:w-5 sm:h-5" />
+                </motion.a>
+                
+                <motion.a
+                  href={personal.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -2 }}
+                  className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary hover:bg-primary/20 transition-colors focus-ring"
+                  aria-label="GitHub"
+                >
+                  <FiGithub className="w-4 h-4 sm:w-5 sm:h-5" />
+                </motion.a>
+              </div>
             </motion.div>
           </div>
 

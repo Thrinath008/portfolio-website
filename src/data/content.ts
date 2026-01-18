@@ -7,6 +7,7 @@ export const portfolioData = {
     phone: "+91 6305015647",
     linkedin: "https://www.linkedin.com/in/saragadathrinath/",
     github: "https://github.com/Thrinath008",
+    instagram: "https://www.instagram.com/__thrinath/?utm_source=ig_web_button_share_sheet",
     resumeUrl: "/ThrinathSaragada_CV.pdf",
   },
 
@@ -76,30 +77,76 @@ export const portfolioData = {
           "Evaluated on Kaggle's 'LLM Detect AI Generated Text' dataset"
         ]
       },
+
+
       {
-        name: "Flight Booking and Management System",
-        year: "2024",
-        description: "Developed a functional application for flight booking and management, using JavaFX for UI and SQL for data handling and storage.",
-        tags: ["Java", "JavaFX", "SQL"],
+        name: "Sri Teja Constructions",
+        year: "Live — Jul 2025",
+        description: "Built a full-scale company website for a civil and piling contractor with complete service and workflow integration.",
+        tags: ["React", "TypeScript", "Vite", "TailwindCSS", "Firebase Hosting"],
         links: [
-          { label: "GitHub", url: "https://github.com/Thrinath008" }
+          { label: "Live", url: "https://sritejaconstructions.in/" }
         ],
         impactPoints: [
-          "Created intuitive UI with JavaFX for seamless booking experience",
-          "Implemented robust SQL database for flight and booking management"
+          "Developed all major website sections including services, projects, equipment, team and contact forms",
+          "Implemented WhatsApp auto-messaging and mobile-first UI",
+          "Deployed and hosted using Firebase with optimized performance"
         ]
       },
       {
-        name: "Arduino NFC Door Lock System",
-        year: "2023",
-        description: "Designed an NFC-based door lock with servo motor automation for secure access, efficient card management, and reliable recognition.",
-        tags: ["Arduino", "NFC", "Servo Motors", "C++"],
+        name: "Trackdemic",
+        year: "Live — Jul 2025",
+        description: "Full academic‑management dashboard for real-time tracking of attendance, exams, assignments and subjects.",
+        tags: ["React", "TypeScript", "Vite", "TailwindCSS", "Firebase Firestore", "Firebase Auth"],
         links: [
-          { label: "GitHub", url: "https://github.com/Thrinath008" }
+          { label: "Live", url: "https://trackdemic.com/" }
         ],
         impactPoints: [
-          "Integrated NFC technology for secure access control",
-          "Automated door mechanism using servo motors with C++"
+          "Migrated system from local storage to Firestore with real-time sync and auto-updates",
+          "Implemented user-based secure isolation, authentication and profile management",
+          "Created a complete responsive UI with dashboard visualizations"
+        ]
+      },
+      {
+        name: "Smart Vision-based Parking Detection System",
+        year: "Dec 2025",
+        description: "Real-time detection and analytics system for parking-slot occupancy using CNN model inference on live camera feed.",
+        tags: ["Python", "PyTorch", "OpenCV", "NumPy", "CV"],
+        links: [
+          { label: "GitHub", url: "https://github.com/Thrinath008/smart-parking-system" }
+        ],
+        impactPoints: [
+          "Built full pipeline — ROI labeling, dataset collection automation, model training, live interface",
+          "Achieved ~100% accuracy in real‑time slot detection",
+          "Implemented highlight overlays and visual analytics dashboard"
+        ]
+      },
+      {
+        name: "Handwritten Digit Recognition System",
+        year: "Aug 2025",
+        description: "Web‑based handwritten digit classification system using custom CNN trained on MNIST dataset.",
+        tags: ["Python", "TensorFlow", "Keras", "NumPy", "FastAPI", "Uvicorn", "HTML", "JavaScript", "CNN", "MNIST"],
+        links: [
+          { label: "GitHub", url: "https://github.com/Thrinath008/mnist_digit_recognizer" }
+        ],
+        impactPoints: [
+          "Achieved 98.6% accuracy with optimized lightweight inference model",
+          "Implemented training pipeline, evaluation and deployment with FastAPI",
+          "Built interactive UI for real‑time digit prediction"
+        ]
+      },
+      {
+        name: "CHAT‑E — AI Powered Conversational Assistant",
+        year: "Aug 2025",
+        description: "Modular AI chatbot with text‑generation, TTS and real‑time search powered by OpenAI models.",
+        tags: ["Python", "OpenAI API", "Hugging Face", "Speech Recognition", "Modular Architecture"],
+        links: [
+          { label: "GitHub", url: "" }
+        ],
+        impactPoints: [
+          "Developed independent modules for automation, model management and conversation logic",
+          "Integrated text‑to‑speech and dynamic real‑time search",
+          "Enabled extensible framework for future multi‑modal capabilities"
         ]
       }
     ]

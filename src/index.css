@@ -123,6 +123,31 @@
   .focus-ring {
     @apply outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
   }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .social-icon-gradient {
+    @apply transition-all duration-300 hover:scale-110 hover:shadow-xl;
+  }
+  
+  .social-icon-instagram {
+    background: linear-gradient(135deg, #E4405F, #C13584, #833AB4, #5851DB, #405DE6);
+  }
+  
+  .social-icon-linkedin {
+    background: linear-gradient(135deg, #0077B5, #005885);
+  }
+  
+  .social-icon-github {
+    background: linear-gradient(135deg, #24292e, #1a1e22);
+  }
 }
 
 @layer base {

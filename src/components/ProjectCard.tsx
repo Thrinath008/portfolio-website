@@ -34,7 +34,7 @@ const ProjectCard = ({
         scale: 1.02,
         transition: { type: "spring", stiffness: 300, damping: 20 }
       }}
-      className="card-interactive p-8 bg-gradient-to-br from-card/80 to-card/40 group"
+      className="card-interactive p-8 bg-gradient-to-br from-card/80 to-card/40 group h-full"
     >
       {/* Header */}
       <div className="flex items-start justify-between mb-6">
