@@ -5,7 +5,7 @@ import { FaInstagram } from 'react-icons/fa';
 import { portfolioData } from '../data/content';
 import { heroContainerVariants, fadeUpVariants } from '../utils/motionVariants';
 import ProfileCard from '../components/ProfileCard';
-import subjectImage from '../data/images/Subject.png';
+import subjectImage from '../data/images/optimized/Subject.webp';
 
 const Hero = () => {
   const [currentTypeIndex, setCurrentTypeIndex] = useState(0);

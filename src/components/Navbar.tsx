@@ -21,7 +21,7 @@ const Navbar = () => {
 
   const allNavItems = [
     { id: 'hero', label: 'Home' },
-    { id: 'gallery', label: 'Gallery' },
+    
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
     { id: 'projects', label: 'Projects' },
@@ -146,7 +146,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         <div className="md:hidden flex justify-center space-x-4 pb-4">
-          {filteredNavItems.filter(item => ['gallery', 'projects', 'contact'].includes(item.id)).map((item) => (
+          {filteredNavItems.filter(item => ['projects', 'education', 'contact'].includes(item.id)).map((item) => (
             <motion.button
               key={item.id}
               onClick={() => scrollToSection(item.id)}

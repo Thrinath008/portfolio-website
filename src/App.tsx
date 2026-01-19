@@ -7,7 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./sections/Hero";
-import Gallery from "./sections/Gallery";
+
 import About from "./sections/About";
 import Skills from "./sections/Skills";
 import Projects from "./sections/Projects";
@@ -66,7 +66,7 @@ const App = () => {
             <About />
             <Skills />
             <Projects />
-            <Gallery />
+            
             <Education />
             <Experience />
             <Contact />
