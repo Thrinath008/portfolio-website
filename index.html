@@ -7,6 +7,14 @@
     <meta name="description" content="AI and ML developer passionate about data science, intelligent systems, and innovation. B.Tech CSE (AI & ML) student at Lovely Professional University and exchange student at ISEP, Paris." />
     <meta name="author" content="Thrinath Saragada" />
     <meta name="keywords" content="AI developer, machine learning engineer, data science, python developer, lpu, isep, artificial intelligence, deep learning, NLP" />
+    
+    <!-- Security Headers and Meta Tags -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
 
     <meta property="og:title" content="Thrinath Saragada — AI & ML Developer" />
     <meta property="og:description" content="AI and ML developer passionate about data science, intelligent systems, and innovation. B.Tech CSE (AI & ML) student at Lovely Professional University and exchange student at ISEP, Paris." />
@@ -21,6 +29,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://apis.google.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https: blob:;
+      connect-src 'self' https://firestore.googleapis.com https://firebase.googleapis.com https://identitytoolkit.googleapis.com;
+      frame-src 'self';
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      manifest-src 'self';
+      worker-src 'self' blob:;
+      child-src 'self' blob:;
+    " />
   </head>
 
   <body>

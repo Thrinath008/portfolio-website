@@ -4,11 +4,11 @@ export const portfolioData = {
     role: "AI/ML Engineer",
     location: "Visakhapatnam, Andhra Pradesh, India",
     email: "saragadathrinath@gmail.com",
-    phone: "+91 6305015647",
+    phone: "+91 6305***647", // Obfuscated for security
     linkedin: "https://www.linkedin.com/in/saragadathrinath/",
     github: "https://github.com/Thrinath008",
     instagram: "https://www.instagram.com/__thrinath/?utm_source=ig_web_button_share_sheet",
-    resumeUrl: "/ThrinathSaragada_CV.pdf",
+    resumeUrl: "/saragada_thrinath_basic.pdf",
   },
 
   hero: {
@@ -206,7 +206,7 @@ export const portfolioData = {
     fields: ["Name", "Email", "Message"],
     submitLabel: "Send Message",
     altContacts: [
-      { label: "Email", value: "saragadathrinath@gmail.com" },
+      { label: "Email", value: "saragadathrinath@gmail.com" }, // Can be shown here as it's for legitimate contact
       { label: "LinkedIn", value: "linkedin.com/in/saragadathrinath" },
       { label: "GitHub", value: "github.com/Thrinath008" }
     ]
