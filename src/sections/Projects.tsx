@@ -102,6 +102,8 @@ const Projects = () => {
           className="relative overflow-x-auto overflow-y-hidden scrollbar-hide"
           onMouseEnter={handleContainerMouseEnter}
           onMouseLeave={handleContainerMouseLeave}
+          onTouchStart={() => setIsHovering(true)}
+          onTouchEnd={() => setTimeout(() => setIsHovering(false), 1000)}
           style={{
             scrollbarWidth: 'none', // Firefox
             msOverflowStyle: 'none', // IE/Edge
@@ -116,6 +118,8 @@ const Projects = () => {
                 style={{ minWidth: '350px' }}
                 onMouseEnter={handleCardMouseEnter}
                 onMouseLeave={handleCardMouseLeave}
+                onTouchStart={() => setIsHovering(true)}
+                onTouchEnd={() => setTimeout(() => setIsHovering(false), 1000)}
               >
                 <ProjectCard
                   name={project.name}

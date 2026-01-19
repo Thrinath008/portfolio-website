@@ -5,10 +5,38 @@ import { portfolioData } from '../data/content';
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('hero');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const allNavItems = [
+    { id: 'hero', label: 'Home' },
+    { id: 'gallery', label: 'Gallery' },
+    { id: 'about', label: 'About' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'education', label: 'Education' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'contact', label: 'Contact' }
+  ];
+
+  // Filter nav items based on device
+  const filteredNavItems = isMobile 
+    ? allNavItems.filter(item => item.id !== 'gallery')
+    : allNavItems;
 
   const navItems = [
     { id: 'hero', label: 'Home' },
-    { id: 'gallery', label: 'Gallery' },
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
     { id: 'projects', label: 'Projects' },
@@ -22,7 +50,7 @@ const Navbar = () => {
       setIsScrolled(window.scrollY > 50);
 
       // Update active section based on scroll position
-      const sections = navItems.map(item => item.id);
+      const sections = filteredNavItems.map(item => item.id);
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -39,7 +67,7 @@ const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [filteredNavItems]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -80,7 +108,7 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+            {filteredNavItems.map((item) => (
               <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
@@ -118,7 +146,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         <div className="md:hidden flex justify-center space-x-4 pb-4">
-          {navItems.slice(1, 5).map((item) => (
+          {filteredNavItems.slice(1, 5).map((item) => (
             <motion.button
               key={item.id}
               onClick={() => scrollToSection(item.id)}

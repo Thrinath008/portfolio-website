@@ -52,6 +52,9 @@ interface ProfileCardProps {
   showIcon?: boolean;
   showBehindGlow?: boolean;
   customInnerGradient?: string;
+  isMobile?: boolean;
+  mobileHeight?: string;
+  mobileMaxHeight?: string;
 }
 
 interface TiltEngine {
@@ -85,7 +88,10 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   onContactClick,
   showIcon = false,
   showBehindGlow = false,
-  customInnerGradient
+  customInnerGradient,
+  isMobile = false,
+  mobileHeight = '280px',
+  mobileMaxHeight = '320px'
 }) => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const shellRef = useRef<HTMLDivElement>(null);
@@ -467,9 +473,9 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
         <section
           className="grid relative overflow-hidden"
           style={{
-            height: '85svh',
-            maxHeight: '650px',
-            aspectRatio: '0.718',
+            height: isMobile ? '300px' : '100svh',
+            maxHeight: isMobile ? '500px' : '700px',
+            aspectRatio: isMobile ? '0.75' : '0.73',
             borderRadius: cardRadius,
             backgroundBlendMode: 'color-dodge, normal, normal, normal',
             boxShadow:
@@ -606,7 +612,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                 <h3
                   className="font-semibold m-0"
                   style={{
-                    fontSize: 'min(6svh, 3.5em)',
+                    fontSize: isMobile ? 'min(4svh, 2em)' : 'min(6svh, 3.5em)',
                     backgroundImage: 'linear-gradient(to bottom, #fff, #6f6fbe)',
                     backgroundSize: '1em 1.5em',
                     WebkitTextFillColor: 'transparent',
@@ -624,8 +630,8 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                   className="font-semibold whitespace-nowrap mx-auto w-min"
                   style={{
                     position: 'relative',
-                    top: '-12px',
-                    fontSize: '16px',
+                    top: isMobile ? '-8px' : '-12px',
+                    fontSize: isMobile ? '12px' : '16px',
                     margin: '0 auto',
                     backgroundImage: 'linear-gradient(to bottom, #fff, #4a4ac0)',
                     backgroundSize: '1em 1.5em',

@@ -13,7 +13,7 @@ const Gallery = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="w-full h-full"
+        className="w-full h-full max-w-[1920px] mx-auto"
       >
         <motion.div 
           variants={itemVariants}
@@ -35,7 +35,7 @@ const Gallery = () => {
             segments={34}
             dragDampening={2}
             grayscale={false}
-            images={gallery.images}
+            images={[...gallery.images, ...gallery.images]} // Infinite scroll effect
             overlayBlurColor="#0B0B0C"
             imageBorderRadius="20px"
             openedImageBorderRadius="20px"

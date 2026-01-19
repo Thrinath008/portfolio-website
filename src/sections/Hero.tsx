@@ -18,7 +18,10 @@ const Hero = () => {
   // Detect mobile device
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+      setIsMobile(
+        window.innerWidth < 768 || 
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      );
     };
     
     checkMobile();
@@ -30,7 +33,7 @@ const Hero = () => {
   useEffect(() => {
     const currentWord = hero.typingCycle[currentTypeIndex];
     const speed = isDeleting ? 50 : 100;
-
+    
     const timer = setTimeout(() => {
       if (!isDeleting) {
         if (displayText.length < currentWord.length) {
@@ -47,7 +50,7 @@ const Hero = () => {
         }
       }
     }, speed);
-
+    
     return () => clearTimeout(timer);
   }, [displayText, isDeleting, currentTypeIndex, hero.typingCycle]);
 
@@ -76,18 +79,18 @@ const Hero = () => {
 
   return (
     <section id="hero" className="min-h-screen flex items-center pt-16">
-      <div className="w-full max-w-[1920px] mx-auto px-6 lg:px-24">
+      <div className={`${isMobile ? 'w-[380px]' : 'w-full max-w-[2000px]'} mx-auto px-6 lg:px-24`}>
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid lg:grid-cols-2 gap-0 items-center min-h-[calc(100vh-4rem)]"
+          className={`${isMobile ? 'flex flex-col' : 'grid lg:grid-cols-2'} gap-4 items-center min-h-[calc(100vh-4rem)]`}
         >
-          {/* Text Content - Left Side */}
-          <div className="space-y-8 py-12 lg:py-0 lg:pr-12 z-10">
+          {/* Text Content - Left/Top Side */}
+          <div className={`${isMobile ? 'order-2' : 'order-1'} space-y-8 py-8 lg:py-0 lg:pr-12 z-10`}>
             <motion.div variants={itemVariants} className="space-y-6">
               <motion.h1 
-                className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight"
+                className={`${isMobile ? 'text-3xl' : 'text-4xl md:text-6xl lg:text-7xl'} font-bold tracking-tight`}
                 variants={itemVariants}
               >
                 <span className="block relative inline-block">
@@ -95,15 +98,15 @@ const Hero = () => {
                   {/* Gradient underline effect */}
                   <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent to-transparent opacity-80" />
                 </span>
-                <span className="block text-foreground mt-4">{hero.headlineTwo}</span>
+                <span className={`block text-foreground ${isMobile ? 'mt-2' : 'mt-4'}`}>{hero.headlineTwo}</span>
               </motion.h1>
               
               <motion.div 
                 variants={itemVariants}
-                className="text-xl text-foreground/90 h-8 flex items-center"
+                className={`text-foreground/90 ${isMobile ? 'h-6' : 'h-8'} flex items-center`}
               >
                 <span className="mr-2">Specializing in</span>
-                <span className="text-primary font-medium min-w-[200px]">
+                <span className={`text-primary font-medium ${isMobile ? 'min-w-[150px]' : 'min-w-[200px]'}`}>
                   {displayText}
                   <motion.span
                     animate={{ opacity: [1, 0] }}
@@ -117,7 +120,7 @@ const Hero = () => {
               
               <motion.p 
                 variants={itemVariants}
-                className="text-lg text-foreground/80 leading-relaxed max-w-xl"
+                className={`text-foreground/80 leading-relaxed ${isMobile ? 'max-w-sm' : 'max-w-xl'}`}
               >
                 {hero.subheadline}
               </motion.p>
@@ -149,53 +152,55 @@ const Hero = () => {
               </motion.a>
             </motion.div>
 
-            {/* Social Media Links */}
-            <motion.div 
-              variants={itemVariants}
-              className="flex items-center gap-4 sm:gap-6 pt-4"
-            >
-              <span className="text-sm sm:text-base text-foreground/60 font-medium whitespace-nowrap">Connect:</span>
-              <div className="flex gap-3 sm:gap-4">
-                <motion.a
-                  href={personal.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ y: -2 }}
-                  className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary hover:bg-primary/20 transition-colors focus-ring"
-                  aria-label="Instagram"
-                >
-                  <FaInstagram className="w-4 h-4 sm:w-5 sm:h-5" />
-                </motion.a>
-                
-                <motion.a
-                  href={personal.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ y: -2 }}
-                  className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary hover:bg-primary/20 transition-colors focus-ring"
-                  aria-label="LinkedIn"
-                >
-                  <FiLinkedin className="w-4 h-4 sm:w-5 sm:h-5" />
-                </motion.a>
-                
-                <motion.a
-                  href={personal.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ y: -2 }}
-                  className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary hover:bg-primary/20 transition-colors focus-ring"
-                  aria-label="GitHub"
-                >
-                  <FiGithub className="w-4 h-4 sm:w-5 sm:h-5" />
-                </motion.a>
-              </div>
-            </motion.div>
+            {/* Social Media Links - Mobile Only */}
+            {isMobile && (
+              <motion.div 
+                variants={itemVariants}
+                className="flex items-center gap-3 pt-4"
+              >
+                <span className="text-sm text-foreground/60 font-medium whitespace-nowrap">Connect:</span>
+                <div className="flex gap-2">
+                  <motion.a
+                    href={personal.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ y: -2 }}
+                    className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary hover:bg-primary/20 transition-colors focus-ring"
+                    aria-label="Instagram"
+                  >
+                    <FaInstagram className="w-3 h-3" />
+                  </motion.a>
+                  
+                  <motion.a
+                    href={personal.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ y: -2 }}
+                    className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary hover:bg-primary/20 transition-colors focus-ring"
+                    aria-label="LinkedIn"
+                  >
+                    <FiLinkedin className="w-3 h-3" />
+                  </motion.a>
+                  
+                  <motion.a
+                    href={personal.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ y: -2 }}
+                    className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary hover:bg-primary/20 transition-colors focus-ring"
+                    aria-label="GitHub"
+                  >
+                    <FiGithub className="w-3 h-3" />
+                  </motion.a>
+                </div>
+              </motion.div>
+            )}
           </div>
 
-          {/* ProfileCard - Right Side */}
+          {/* ProfileCard - Right/Bottom Side */}
           <motion.div
             variants={itemVariants}
-            className="relative h-[600px] lg:h-[700px] flex items-center justify-center"
+            className={`relative ${isMobile ? 'h-[280px]' : 'h-[600px] lg:h-[700px]'} flex items-center justify-center`}
           >
             <ProfileCard
               name="Thrinath"
@@ -205,27 +210,31 @@ const Hero = () => {
               contactText="Contact Me"
               avatarUrl={subjectImage}
               showUserInfo={false}
-              enableTilt={!isMobile}
+              enableTilt={false}
               enableMobileTilt={false}
               onContactClick={handleContactClick}
               showIcon={true}
               showBehindGlow={true}
               behindGlowColor="rgba(192, 192, 192, 0.4)"
               customInnerGradient="linear-gradient(145deg,#000000 0%,#C0C0C0 50%,#FFFFFF 100%)"
+              isMobile={isMobile}
+              mobileHeight="220px"
+              mobileMaxHeight="250px"
+              className={`${isMobile ? 'max-w-[200px]' : 'max-w-[300px]'} w-full`}
             />
           </motion.div>
         </motion.div>
-      </div>
 
-      {/* Background decoration */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div 
-          className="absolute top-1/4 right-1/4 w-72 h-72 bg-primary/5 rounded-full blur-3xl"
-          style={{
-            background: 'var(--hero-gradient)'
-          }}
-        />
-        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+        {/* Background decoration */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div 
+            className="absolute top-1/4 right-1/4 w-72 h-72 bg-primary/5 rounded-full blur-3xl"
+            style={{
+              background: 'var(--hero-gradient)'
+            }}
+          />
+          <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+        </div>
       </div>
     </section>
   );

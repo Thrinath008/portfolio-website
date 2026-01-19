@@ -82,7 +82,7 @@
 @layer components {
   /* Portfolio-specific component styles */
   .section-container {
-    @apply mx-auto max-w-6xl px-6 py-24 lg:px-8;
+    @apply mx-auto max-w-7xl px-10 py-24 lg:px-10;
   }
   
   .card-interactive {
