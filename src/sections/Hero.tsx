@@ -200,7 +200,7 @@ const Hero = () => {
           {/* ProfileCard - Right/Bottom Side */}
           <motion.div
             variants={itemVariants}
-            className={`relative ${isMobile ? 'h-[280px]' : 'h-[600px] lg:h-[700px]'} flex items-center justify-center`}
+            className={`relative ${isMobile ? 'h-[280px] pt-20' : 'h-[600px] lg:h-[700px]'} flex items-center justify-center`}
           >
             <ProfileCard
               name="Thrinath"
