@@ -152,49 +152,47 @@ const Hero = () => {
               </motion.a>
             </motion.div>
 
-            {/* Social Media Links - Mobile Only */}
-            {isMobile && (
-              <motion.div 
-                variants={itemVariants}
-                className="flex items-center gap-3 pt-4"
-              >
-                <span className="text-sm text-foreground/60 font-medium whitespace-nowrap">Connect:</span>
-                <div className="flex gap-2">
-                  <motion.a
-                    href={personal.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ y: -2 }}
-                    className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary hover:bg-primary/20 transition-colors focus-ring"
-                    aria-label="Instagram"
-                  >
-                    <FaInstagram className="w-3 h-3" />
-                  </motion.a>
-                  
-                  <motion.a
-                    href={personal.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ y: -2 }}
-                    className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary hover:bg-primary/20 transition-colors focus-ring"
-                    aria-label="LinkedIn"
-                  >
-                    <FiLinkedin className="w-3 h-3" />
-                  </motion.a>
-                  
-                  <motion.a
-                    href={personal.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ y: -2 }}
-                    className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary hover:bg-primary/20 transition-colors focus-ring"
-                    aria-label="GitHub"
-                  >
-                    <FiGithub className="w-3 h-3" />
-                  </motion.a>
-                </div>
-              </motion.div>
-            )}
+            {/* Social Media Links - All Versions */}
+            <motion.div 
+              variants={itemVariants}
+              className="flex items-center gap-3 pt-4"
+            >
+              <span className={`${isMobile ? 'text-sm' : 'text-base'} text-foreground/60 font-medium whitespace-nowrap`}>Connect:</span>
+              <div className="flex gap-2">
+                <motion.a
+                  href={personal.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -2 }}
+                  className={`${isMobile ? 'w-10 h-10' : 'w-12 h-12'} bg-primary/10 rounded-lg flex items-center justify-center text-primary hover:bg-primary/20 transition-colors focus-ring`}
+                  aria-label="Instagram"
+                >
+                  <FaInstagram className={`${isMobile ? 'w-4 h-4' : 'w-5 h-5'}`} />
+                </motion.a>
+                
+                <motion.a
+                  href={personal.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -2 }}
+                  className={`${isMobile ? 'w-10 h-10' : 'w-12 h-12'} bg-primary/10 rounded-lg flex items-center justify-center text-primary hover:bg-primary/20 transition-colors focus-ring`}
+                  aria-label="LinkedIn"
+                >
+                  <FiLinkedin className={`${isMobile ? 'w-4 h-4' : 'w-5 h-5'}`} />
+                </motion.a>
+                
+                <motion.a
+                  href={personal.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -2 }}
+                  className={`${isMobile ? 'w-10 h-10' : 'w-12 h-12'} bg-primary/10 rounded-lg flex items-center justify-center text-primary hover:bg-primary/20 transition-colors focus-ring`}
+                  aria-label="GitHub"
+                >
+                  <FiGithub className={`${isMobile ? 'w-4 h-4' : 'w-5 h-5'}`} />
+                </motion.a>
+              </div>
+            </motion.div>
           </div>
 
           {/* ProfileCard - Right/Bottom Side */}
