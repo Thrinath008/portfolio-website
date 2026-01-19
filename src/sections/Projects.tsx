@@ -72,7 +72,7 @@ const Projects = () => {
   const duplicatedCards = [...projects.cards, ...projects.cards];
 
   return (
-    <section id="projects" className="section-container">
+    <section id="projects" className="section-container md:px-10 px-0 md:py-24 py-16">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -109,7 +109,7 @@ const Projects = () => {
             msOverflowStyle: 'none', // IE/Edge
           }}
         >
-          <div className="flex gap-6 pb-4" style={{ width: 'max-content' }}>
+          <div className="flex gap-6 pb-4 md:px-0 px-0" style={{ width: 'max-content' }}>
             {duplicatedCards.map((project, index) => (
               <motion.div
                 key={`${project.name}-${index}`}

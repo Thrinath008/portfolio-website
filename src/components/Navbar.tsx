@@ -32,7 +32,7 @@ const Navbar = () => {
 
   // Filter nav items based on device
   const filteredNavItems = isMobile 
-    ? allNavItems.filter(item => item.id !== 'gallery')
+    ? allNavItems.filter(item => item.id !== 'about')
     : allNavItems;
 
   const navItems = [
@@ -146,7 +146,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         <div className="md:hidden flex justify-center space-x-4 pb-4">
-          {filteredNavItems.slice(1, 5).map((item) => (
+          {filteredNavItems.filter(item => ['gallery', 'projects', 'contact'].includes(item.id)).map((item) => (
             <motion.button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
