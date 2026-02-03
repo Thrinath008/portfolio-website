@@ -9,16 +9,17 @@ const Projects = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isAutoScrolling, setIsAutoScrolling] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
+  const [touchStarted, setTouchStarted] = useState(false);
   const scrollSpeed = 1; // pixels per frame for smoother scrolling
   const animationFrameRef = useRef<number>();
   const scrollPositionRef = useRef(0);
 
   // Auto-scroll functionality
   useEffect(() => {
-    if (!isAutoScrolling || isHovering || !scrollContainerRef.current) return;
+    if (!isAutoScrolling || isHovering || touchStarted || !scrollContainerRef.current) return;
 
     const autoScroll = () => {
-      if (scrollContainerRef.current && !isHovering) {
+      if (scrollContainerRef.current && !isHovering && !touchStarted) {
         const { scrollWidth, clientWidth } = scrollContainerRef.current;
         const maxScroll = scrollWidth - clientWidth;
         
@@ -43,7 +44,7 @@ const Projects = () => {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [isAutoScrolling, isHovering]);
+  }, [isAutoScrolling, isHovering, touchStarted]);
 
   // Handle hover on individual cards
   const handleCardMouseEnter = () => {
@@ -61,6 +62,18 @@ const Projects = () => {
 
   const handleContainerMouseLeave = () => {
     setIsHovering(false);
+  };
+
+  // Handle touch events for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
+    setTouchStarted(true);
+    setIsAutoScrolling(false); // Stop auto-scroll immediately on touch
+  };
+
+  const handleTouchEnd = () => {
+    // Don't auto-resume - user must manually enable it
+    // setIsHovering(false) - keep hover state to prevent auto-scroll
   };
 
   // Manual scroll control
@@ -102,8 +115,8 @@ const Projects = () => {
           className="relative overflow-x-auto overflow-y-hidden scrollbar-hide"
           onMouseEnter={handleContainerMouseEnter}
           onMouseLeave={handleContainerMouseLeave}
-          onTouchStart={() => setIsHovering(true)}
-          onTouchEnd={() => setTimeout(() => setIsHovering(false), 1000)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
           style={{
             scrollbarWidth: 'none', // Firefox
             msOverflowStyle: 'none', // IE/Edge
@@ -118,8 +131,8 @@ const Projects = () => {
                 style={{ minWidth: '350px' }}
                 onMouseEnter={handleCardMouseEnter}
                 onMouseLeave={handleCardMouseLeave}
-                onTouchStart={() => setIsHovering(true)}
-                onTouchEnd={() => setTimeout(() => setIsHovering(false), 1000)}
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
               >
                 <ProjectCard
                   name={project.name}
@@ -137,9 +150,9 @@ const Projects = () => {
 
         {/* Scroll Indicator */}
         <div className="flex justify-center mt-8 gap-2">
-          <div className={`w-2 h-2 rounded-full transition-colors ${isAutoScrolling && !isHovering ? 'bg-primary/60 animate-pulse' : 'bg-primary/20'}`}></div>
-          <div className={`w-2 h-2 rounded-full transition-colors ${isAutoScrolling && !isHovering ? 'bg-primary/40 animate-pulse delay-75' : 'bg-primary/20'}`}></div>
-          <div className={`w-2 h-2 rounded-full transition-colors ${isAutoScrolling && !isHovering ? 'bg-primary/20 animate-pulse delay-150' : 'bg-primary/20'}`}></div>
+          <div className={`w-2 h-2 rounded-full transition-colors ${isAutoScrolling && !isHovering && !touchStarted ? 'bg-primary/60 animate-pulse' : 'bg-primary/20'}`}></div>
+          <div className={`w-2 h-2 rounded-full transition-colors ${isAutoScrolling && !isHovering && !touchStarted ? 'bg-primary/40 animate-pulse delay-75' : 'bg-primary/20'}`}></div>
+          <div className={`w-2 h-2 rounded-full transition-colors ${isAutoScrolling && !isHovering && !touchStarted ? 'bg-primary/20 animate-pulse delay-150' : 'bg-primary/20'}`}></div>
         </div>
       </motion.div>
     </section>

@@ -17,9 +17,12 @@ import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
 import PixelSnow from "./components/PixelSnow";
 
+import { useContentProtection } from "./hooks/useContentProtection";
+
 const queryClient = new QueryClient();
 
 const App = () => {
+  useContentProtection();
   const [isMobile, setIsMobile] = React.useState(false);
 
   // Detect mobile device
@@ -27,10 +30,10 @@ const App = () => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
+
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
@@ -42,7 +45,7 @@ const App = () => {
         <div className="min-h-screen bg-background relative">
           {/* Pixel Snow Background */}
           <div style={{ width: '100%', height: '100vh', position: 'fixed', top: 0, left: 0, zIndex: 1 }}>
-            <PixelSnow 
+            <PixelSnow
               color="#ffffff"
               flakeSize={0.01}
               minFlakeSize={1.25}
@@ -57,20 +60,20 @@ const App = () => {
               variant="round"
             />
           </div>
-          
+
           {/* Main Content */}
           <div className={`relative z-10 ${isMobile ? 'w-[98%]' : ''}`}>
             <Navbar />
-<main>
-            <Hero />
-            <About />
-            <Skills />
-            <Projects />
-            
-            <Education />
-            <Experience />
-            <Contact />
-          </main>
+            <main>
+              <Hero />
+              <About />
+              <Skills />
+              <Projects />
+
+              <Education />
+              <Experience />
+              <Contact />
+            </main>
             <Footer />
           </div>
         </div>
