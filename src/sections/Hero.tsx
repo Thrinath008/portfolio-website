@@ -19,21 +19,21 @@ const Hero = () => {
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(
-        window.innerWidth < 768 || 
+        window.innerWidth < 768 ||
         /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
       );
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
+
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   useEffect(() => {
     const currentWord = hero.typingCycle[currentTypeIndex];
     const speed = isDeleting ? 50 : 100;
-    
+
     const timer = setTimeout(() => {
       if (!isDeleting) {
         if (displayText.length < currentWord.length) {
@@ -50,7 +50,7 @@ const Hero = () => {
         }
       }
     }, speed);
-    
+
     return () => clearTimeout(timer);
   }, [displayText, isDeleting, currentTypeIndex, hero.typingCycle]);
 
@@ -84,12 +84,12 @@ const Hero = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className={`${isMobile ? 'flex flex-col' : 'grid lg:grid-cols-2'} gap-4 items-center min-h-[calc(100vh-4rem)]`}
+          className={`${isMobile ? 'flex flex-col' : 'grid min-[1500px]:grid-cols-2'} gap-4 items-center min-h-[calc(100vh-4rem)]`}
         >
           {/* Text Content - Left/Top Side */}
-          <div className={`${isMobile ? 'order-2' : 'order-1'} space-y-8 py-8 lg:py-0 lg:pr-12 z-10`}>
+          <div className={`${isMobile ? 'order-2' : 'order-1'} space-y-8 py-8 min-[1500px]:py-0 min-[1500px]:pr-12 z-10`}>
             <motion.div variants={itemVariants} className="space-y-6">
-              <motion.h1 
+              <motion.h1
                 className={`${isMobile ? 'text-3xl' : 'text-4xl md:text-6xl lg:text-7xl'} font-bold tracking-tight`}
                 variants={itemVariants}
               >
@@ -100,8 +100,8 @@ const Hero = () => {
                 </span>
                 <span className={`block text-foreground ${isMobile ? 'mt-2' : 'mt-4'}`}>{hero.headlineTwo}</span>
               </motion.h1>
-              
-              <motion.div 
+
+              <motion.div
                 variants={itemVariants}
                 className={`text-foreground/90 ${isMobile ? 'h-6' : 'h-8'} flex items-center`}
               >
@@ -117,8 +117,8 @@ const Hero = () => {
                   </motion.span>
                 </span>
               </motion.div>
-              
-              <motion.p 
+
+              <motion.p
                 variants={itemVariants}
                 className={`text-foreground/80 leading-relaxed ${isMobile ? 'max-w-sm' : 'max-w-xl'}`}
               >
@@ -126,7 +126,7 @@ const Hero = () => {
               </motion.p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4"
             >
@@ -139,10 +139,10 @@ const Hero = () => {
                 <span>{hero.primaryCta}</span>
                 <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
               </motion.button>
-              
+
               <motion.a
-                href="/saragada_thrinath_basic.pdf"
-                download="saragada_thrinath_basic.pdf"
+                href="/SaragadaThrinath_CV.pdf"
+                download="SaragadaThrinath_CV.pdf"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="button-secondary focus-ring group"
@@ -153,7 +153,7 @@ const Hero = () => {
             </motion.div>
 
             {/* Social Media Links - All Versions */}
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="flex items-center gap-3 pt-4"
             >
@@ -169,7 +169,7 @@ const Hero = () => {
                 >
                   <FaInstagram className={`${isMobile ? 'w-4 h-4' : 'w-5 h-5'}`} />
                 </motion.a>
-                
+
                 <motion.a
                   href={personal.linkedin}
                   target="_blank"
@@ -180,7 +180,7 @@ const Hero = () => {
                 >
                   <FiLinkedin className={`${isMobile ? 'w-4 h-4' : 'w-5 h-5'}`} />
                 </motion.a>
-                
+
                 <motion.a
                   href={personal.github}
                   target="_blank"
@@ -225,7 +225,7 @@ const Hero = () => {
 
         {/* Background decoration */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div 
+          <div
             className="absolute top-1/4 right-1/4 w-72 h-72 bg-primary/5 rounded-full blur-3xl"
             style={{
               background: 'var(--hero-gradient)'

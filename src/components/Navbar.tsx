@@ -12,16 +12,16 @@ const Navbar = () => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
+
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   const allNavItems = [
     { id: 'hero', label: 'Home' },
-    
+
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
     { id: 'projects', label: 'Projects' },
@@ -31,7 +31,7 @@ const Navbar = () => {
   ];
 
   // Filter nav items based on device
-  const filteredNavItems = isMobile 
+  const filteredNavItems = isMobile
     ? allNavItems.filter(item => item.id !== 'about')
     : allNavItems;
 
@@ -88,11 +88,10 @@ const Navbar = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-background/80 backdrop-blur-md border-b border-border/60' 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+          ? 'bg-background/80 backdrop-blur-md border-b border-border/60'
           : 'bg-transparent'
-      }`}
+        }`}
     >
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -113,11 +112,10 @@ const Navbar = () => {
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 whileHover={{ y: -2 }}
-                className={`relative px-3 py-2 text-sm font-medium transition-colors focus-ring ${
-                  activeSection === item.id
+                className={`relative px-3 py-2 text-sm font-medium transition-colors focus-ring ${activeSection === item.id
                     ? 'text-primary'
                     : 'text-muted-foreground hover:text-foreground'
-                }`}
+                  }`}
               >
                 {item.label}
                 {activeSection === item.id && (
@@ -134,8 +132,8 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <motion.a
-            href="/saragada_thrinath_basic.pdf"
-            download="saragada_thrinath_basic.pdf"
+            href="/SaragadaThrinath_CV.pdf"
+            download="SaragadaThrinath_CV.pdf"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.95 }}
             className="button-primary focus-ring"
@@ -151,11 +149,10 @@ const Navbar = () => {
               key={item.id}
               onClick={() => scrollToSection(item.id)}
               whileTap={{ scale: 0.95 }}
-              className={`text-xs font-medium transition-colors focus-ring px-2 py-1 rounded ${
-                activeSection === item.id
+              className={`text-xs font-medium transition-colors focus-ring px-2 py-1 rounded ${activeSection === item.id
                   ? 'text-primary bg-primary/10'
                   : 'text-muted-foreground hover:text-foreground'
-              }`}
+                }`}
             >
               {item.label}
             </motion.button>
