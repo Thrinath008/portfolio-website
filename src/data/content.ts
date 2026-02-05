@@ -8,7 +8,7 @@ export const portfolioData = {
     linkedin: "https://www.linkedin.com/in/saragadathrinath/",
     github: "https://github.com/Thrinath008",
     instagram: "https://www.instagram.com/__thrinath/?utm_source=ig_web_button_share_sheet",
-    resumeUrl: "/saragada_thrinath_basic.pdf",
+    resumeUrl: "/SaragadaThrinath_CV_final.pdf",
   },
 
   hero: {
@@ -20,7 +20,7 @@ export const portfolioData = {
     secondaryCta: "Download CV",
   },
 
-  
+
 
   about: {
     title: "About",
@@ -41,7 +41,7 @@ export const portfolioData = {
       },
       {
         heading: "AI/ML",
-        items: ["NLP", "Deep Learning", "Neural Networks","TensorFlow","Pytorch", "Scikit-learn", "Hugging Face"]
+        items: ["NLP", "Deep Learning", "Neural Networks", "TensorFlow", "Pytorch", "Scikit-learn", "Hugging Face"]
       },
       {
         heading: "Data Science",
